@@ -104,7 +104,7 @@ module Resque
 
       if skip_exists || exists?(worker_id)
         host, pid, queues_raw = worker_id.split(':')
-        queues = queues_raw.split(',')
+        queues = queues_raw.to_s.split(',')
         worker = new(*queues)
         worker.hostname = host
         worker.to_s = worker_id
