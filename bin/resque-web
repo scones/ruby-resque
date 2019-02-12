@@ -3,6 +3,7 @@
 $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
 begin
   require 'vegas'
+  require 'json'
 rescue LoadError
   require 'rubygems'
   require 'vegas'
