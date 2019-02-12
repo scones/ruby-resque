@@ -24,6 +24,10 @@ Vegas::Runner.new(Resque::Server, 'resque-web', {
     runner.logger.info "Using Redis connection '#{redis_conf}'"
     Resque.redis = redis_conf
   }
+  opts.on('-j redis-connection-json', "--json redis-connection-json", "set the Redis connection string as json") {|redis_json|
+    runner.logger.info "Using Redis connection json '#{redis_json}'"
+    Resque.redis = JSON.parse(redis_json,:symbolize_names => true)
+  }
   opts.on('-a url-prefix', "--append url-prefix", "set reverse_proxy friendly prefix to links") {|url_prefix|
     runner.logger.info "Using URL Prefix '#{url_prefix}'"
     Resque::Server.url_prefix = url_prefix
